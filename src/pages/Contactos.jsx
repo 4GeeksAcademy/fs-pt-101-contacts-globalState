@@ -6,13 +6,19 @@ export const Contactos = () => {
 
     const { store, dispatch } = useGlobalReducer()
 
-useEffect(()=>{
-    console.log(postService);
-    
-    postService.loadPosts(dispatch);
-    // dispatch({type:'updater', payload:{name:'agendas',value:loadPosts()}})
-},[])
-
+    useEffect(() => {
+        const fetchAgendas = async () => {
+          try {
+            const data = await postService.loadPosts()
+            dispatch({ type: 'SET_AGENDAS', payload: data })
+          } catch (error) {
+            console.error('Error cargando agendas:', error)
+          }
+        }
+      
+        fetchAgendas()
+      }, [])
+      
     console.log('contactos',store)
     // console.log('contactos',store.nombre)
     return (

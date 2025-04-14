@@ -22,16 +22,11 @@ export const initialStore = () => {
 ///en el reducer NADA PUEDE SER ASINCRONO
 export default function storeReducer(store, action = {}) {
   switch (action.type) {
-    case 'updater':
-      if (action.payload) {
-        return {
-          ...store,
-          [action.payload.name]: action.payload.value
-        }
-      }
+    case 'SET_AGENDAS':
       return {
-        ...store
-      }
+        ...store,
+        agendas: action.payload
+      };
   
     case 'changeMessage':
       console.log('se ejecuta changeMessage')
