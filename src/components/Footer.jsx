@@ -1,5 +1,12 @@
-export const Footer = () => (
+import useGlobalReducer from "../hooks/useGlobalReducer";
+
+export const Footer = () =>{ 
+	
+	const {store} = useGlobalReducer()
+
+	return(
 	<footer className="footer mt-auto py-3 text-center">
+		<p>dicen que te llames {store.nombre}</p>
 		<p>
 			Check the <a target="_blank" href="https://4geeks.com/docs/start/start-react-advanced-project">template documentation</a> <i className="fa-solid fa-file"></i> for help.
 		</p>
@@ -8,4 +15,4 @@ export const Footer = () => (
 			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
 		</p>
 	</footer>
-);
+);}
